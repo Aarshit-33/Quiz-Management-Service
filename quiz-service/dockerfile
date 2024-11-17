@@ -1,0 +1,18 @@
+# Step 1: Specify base image
+FROM node:16
+
+# Step 2: Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# Step 3: Copy package.json and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Step 4: Copy all other source code to the container
+COPY . .
+
+# Step 5: Expose the port the app runs on
+EXPOSE 5002
+
+# Step 6: Command to start the app
+CMD ["npm", "start"]
