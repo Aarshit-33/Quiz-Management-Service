@@ -1,0 +1,18 @@
+# Step 1: Specify the base image for Python
+FROM python:3.12
+
+# Step 2: Set the working directory
+WORKDIR /app
+
+# Step 3: Copy the requirements.txt file and install dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Step 4: Copy the source code into the container
+COPY . .
+
+# Step 5: Expose the port Flask runs on
+EXPOSE 5000
+
+# Step 6: Command to start the Flask app
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
